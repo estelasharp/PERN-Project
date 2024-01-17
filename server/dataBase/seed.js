@@ -20,29 +20,29 @@ const dropTables = async () => {
 
 const createTables = async () => {
     try { 
-    console.log("building tables...")
+    console.log("Building Tables...")
     await client.query(`
-    CREATE TABLES users (
+    CREATE TABLE users (
         "userId" SERIAL PRIMARY KEY,
         "userName" varchar(40) NOT NULL,
         "firstName" varchar(40),
         "lastName" varchar(40),
         password varchar(40)
     );
-    CREATE TABLES resorts (
-        "resortId" PRIMARY KEY,
+    CREATE TABLE resorts (
+        "resortId" SERIAL PRIMARY KEY,
         name varchar(100) NOT NULL,
         city varchar(100),
         state varchar(100)
     );
-    CREATE TABLES favorites (
-        "favoritesId" PRIMARY KEY,
+    CREATE TABLE favorites (
+        "favoritesId" SERIAL PRIMARY KEY,
         "userId" INT,
-        "resortId" INT,
+        "resortId" INT
     );
     `)
 
-    console.log("tables builts!")
+    console.log("Tables Built!")
     } catch (error) {
         console.error(error)
     }
@@ -59,6 +59,7 @@ const buildDb = async () => {
 
         //run functions
         await dropTables()
+        await createTables()
     } catch (error) {
         console.error(error)
         //finally will always run whether the catch triggers or not
