@@ -23,14 +23,22 @@ const createTables = async () => {
     console.log("building tables...")
     await client.query(`
     CREATE TABLES users (
-        "userId" SERIAL PRIMARY KEY
-        name varchar(40)
+        "userId" SERIAL PRIMARY KEY,
+        "userName" varchar(40) NOT NULL,
+        "firstName" varchar(40),
+        "lastName" varchar(40),
+        password varchar(40)
     );
     CREATE TABLES resorts (
-        "resortId"
+        "resortId" PRIMARY KEY,
+        name varchar(100) NOT NULL,
+        city varchar(100),
+        state varchar(100)
     );
     CREATE TABLES favorites (
-        "favoritesId"
+        "favoritesId" PRIMARY KEY,
+        "userId" INT,
+        "resortId" INT,
     );
     `)
 
