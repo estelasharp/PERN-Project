@@ -5,4 +5,4 @@ const { Client } = require('pg')
 const client = new Client(`https://localhost:5432/powderplanner`)
 
 //export for use in other files
-module.exports = client
+module.exports = client;
