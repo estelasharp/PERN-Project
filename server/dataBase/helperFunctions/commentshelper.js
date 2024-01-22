@@ -1,4 +1,4 @@
-const client = require('../dataBase/client')
+const client = require('../client')
 const util = require('./util')
 
 
