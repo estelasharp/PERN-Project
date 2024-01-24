@@ -1,6 +1,6 @@
 const client = require('../client')
 
-//get all resorts
+// GET - all resorts
 const getAllResorts = async() => {
     try {
         const { rows } = await client.query(
@@ -14,7 +14,7 @@ const getAllResorts = async() => {
     }
 }
 
- //get resort by id
+ // GET - a single resort by id
 const getResortById = async (id) => {
     try {
         const {
@@ -31,8 +31,8 @@ const getResortById = async (id) => {
 
 }
 
-//get resort by location
-const getResortByLocation = async (locationId) => {
+// GET - a resort by location
+const getResortsByLocation = async (locationId) => {
     try {
         const {
             rows
@@ -48,4 +48,4 @@ const getResortByLocation = async (locationId) => {
     }
 }
 
-module.exports = { getAllResorts, getResortById, getResortByLocation }
+module.exports = { getAllResorts, getResortById, getResortsByLocation }

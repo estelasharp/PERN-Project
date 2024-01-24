@@ -1,6 +1,6 @@
 const client = require('../client')
 
-//get all locations
+// GET - all locations
 const getAllLocations = async() => {
     try {
         const { rows } = await client.query(
@@ -14,7 +14,7 @@ const getAllLocations = async() => {
     }
 }
 
- //get resort by id
+ // GET - a single resort by id
 const getLocationById = async(id) => {
     try {
         const {

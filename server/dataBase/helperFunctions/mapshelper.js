@@ -1,6 +1,6 @@
 const client = require('../client')
 
-//get all maps
+// GET - all maps
 const getAllMaps = async () => {
     try {
         const { rows } = await client.query(
@@ -15,8 +15,8 @@ const getAllMaps = async () => {
     }
 }
 
-//get map by id
-const getMapsById = async (id) => {
+// GET - a single map by id
+const getMapById = async (id) => {
     try {
         const {
             row: [map],
@@ -32,7 +32,7 @@ const getMapsById = async (id) => {
 
 }
 
-//get map by resort
+// GET - map by resort
 const getMapByResort = async (resortId) => {
     try {
         const {
@@ -49,8 +49,8 @@ const getMapByResort = async (resortId) => {
     }
 }
 
-//get map by location
-const getMapByLocation = async (locationId) => {
+// GET - maps by location
+const getMapsByLocation = async (locationId) => {
     try {
         const {
             rows
@@ -68,4 +68,4 @@ const getMapByLocation = async (locationId) => {
 
 
 
-module.exports = { getAllMaps, getMapsById, getMapByResort, getMapByLocation }
+module.exports = { getAllMaps, getMapById, getMapByResort, getMapsByLocation }

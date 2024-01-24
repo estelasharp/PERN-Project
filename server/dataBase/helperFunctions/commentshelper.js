@@ -2,7 +2,7 @@ const client = require('../client')
 const util = require('./util')
 
 
-//get all comments from map
+// GET - all comments from map
 const getCommentsByMap = async() => {
     try {
         const { rows } = await client.query(
@@ -17,7 +17,7 @@ const getCommentsByMap = async() => {
     }
 }
 
-//create a comment
+//CREATE - a comment
 const createComment = async ({ title, body, date, mapId, resortId, locationId }) => {
     try {
         const {
@@ -35,7 +35,7 @@ const createComment = async ({ title, body, date, mapId, resortId, locationId })
     }
 }
 
-//update a comment
+// UPDATE - a comment
 const updateComment = async(id, fields) => {
     try {
         const toUpdate = {}
@@ -62,7 +62,7 @@ const updateComment = async(id, fields) => {
 }
 
 
-//delete a comment
+// DELETE - a comment
 const deleteComment = async (id) => {
     try {
         const {
