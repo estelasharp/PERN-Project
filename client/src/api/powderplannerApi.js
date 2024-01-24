@@ -29,10 +29,29 @@ export const powderplannerApi = createApi({
         fetchSingleLocation: build.query({
             query: (id) => `/locations/${id}`,
         }),
-
-    
+        createComment: build.mutation({
+            query: (data) => ({
+                url: '/comments',
+                method: 'POST',
+                body: {...data},
+            })
+        }),
+        updateComment: build.query({
+            query: (data) => ({
+                url: `/comments/${id}`,
+                method: 'PUT',
+                body: {...data},
+            })
+        }),
+        deleteComment: build.query({
+            query: (data) => ({
+                url: `/comments/${id}`,
+                method: 'DELETE',
+            }),
         }),
 
     }),
 
 })
+
+export const { useFetchMapsQuery, useFetchSingleMapQuery, useFetchResortsQuery, useFetchSingleResortQuery, useFetchLocationsQuery, useFetchSingleLocationQuery, useCreateCommentQuery, useUpdateCommentQuery, useDeleteCommentQuery } = powderplannerApi
