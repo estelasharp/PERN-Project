@@ -1,11 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit'
+import { powderplannerApi } from '../api/powderplannerApi'
+
 
 const store = configureStore({
     reducer : {
-        //stuff goes in here
-        // reducerName: importedReducerName
+        [powderplannerApi.reducerPath]: powderplannerApi.reducer
 
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(powderplannerApi.middleware)
 });
 
 export default store;

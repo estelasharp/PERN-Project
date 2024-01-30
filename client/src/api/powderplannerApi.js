@@ -10,6 +10,7 @@ export const powderplannerApi = createApi({
             return headers;
         }
     }),
+    tagTypes: ['Comments'],
     endpoints: (build) => ({
         fetchMaps: build.query({
             query: () => '/maps',
@@ -29,29 +30,36 @@ export const powderplannerApi = createApi({
         fetchSingleLocation: build.query({
             query: (id) => `/locations/${id}`,
         }),
+        fetchMapComments: build.query({
+            query: (mapId) => `/comments/${[mapId]}`,
+            providesTags: ['Comments']
+        }),
         createComment: build.mutation({
             query: (data) => ({
                 url: '/comments',
                 method: 'POST',
                 body: {...data},
-            })
+            }),
+            invalidatesTags: ['Comments']
         }),
-        updateComment: build.query({
+        updateComment: build.mutation({
             query: (data) => ({
                 url: `/comments/${id}`,
                 method: 'PUT',
                 body: {...data},
-            })
+            }),
+            invalidatesTags: ['Comments']
         }),
-        deleteComment: build.query({
+        deleteComment: build.mutation({
             query: (data) => ({
                 url: `/comments/${id}`,
                 method: 'DELETE',
             }),
+            invalidateTags: ['Comments'],
         }),
 
     }),
 
 })
 
-export const { useFetchMapsQuery, useFetchSingleMapQuery, useFetchResortsQuery, useFetchSingleResortQuery, useFetchLocationsQuery, useFetchSingleLocationQuery, useCreateCommentQuery, useUpdateCommentQuery, useDeleteCommentQuery } = powderplannerApi
+export const { useFetchMapsQuery, useFetchSingleMapQuery, useFetchResortsQuery, useFetchSingleResortQuery, useFetchLocationsQuery, useFetchSingleLocationQuery, useFetchMapCommentsQuery, useCreateCommentMutation, useUpdateCommentMutation, useDeleteCommentMutation } = powderplannerApi
